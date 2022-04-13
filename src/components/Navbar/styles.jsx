@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     .elements {
-        margin: 0 30vh;
+        margin: 0 2vw;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -10,6 +10,10 @@ export const Container = styled.div`
     }
     hr {
         color: #F1F1F1;
+    }
+
+    img {
+        height: 7vh;
     }
 
     .link {

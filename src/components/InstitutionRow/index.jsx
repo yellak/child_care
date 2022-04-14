@@ -1,6 +1,9 @@
 import { Container } from "./styles"
+import { Link} from "react-router-dom";
+
 
 const InstitutionRow = ({image, ...props}) => {
+
     return(
         <Container>
             <td>
@@ -15,9 +18,11 @@ const InstitutionRow = ({image, ...props}) => {
                 </div>
             </td>
             <td>
-                <button>
-                    Detalhes
-                </button>
+                <Link to='/institutions/2'>
+                    <button>
+                        Detalhes
+                    </button>
+                </Link>
             </td>
         </Container>
     )

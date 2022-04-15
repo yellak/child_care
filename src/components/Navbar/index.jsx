@@ -10,7 +10,7 @@ const Navbar = () => {
         <Link to="/" className='link'> Explorar </Link>
         <Link to="/" className='link'> Sugerir uma Instituição </Link>
         <Link to="/" className='link'> Sobre Nós </Link>
-        <Link to="/" className='link'> Minhas Doações </Link>
+        <Link to="/donations" className='link'> Minhas Doações </Link>
         <Link to="/" className='link'> Login </Link>
       </div>
       <hr></hr>

@@ -128,7 +128,7 @@ export const MessageInput = styled.textarea`
 `;
 
 export const InfoText = styled.span`
-
+  font-size: 1rem;
 `;
 
 export const MessageBox = styled.div`
@@ -151,4 +151,56 @@ export const SubmitButton = styled.button`
   &:hover{
     background: linear-gradient(10deg, rgba(48, 5, 140, 0.84) 0%, rgba(9, 34, 98, 0.84) 100%);
   }
+`;
+
+export const PaymentBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+`;
+
+export const PaymentField = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+`;
+
+export const PaymentInput = styled.input`
+  height: 2.4rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  width: 21.7rem;
+  border: none;
+  border-radius: 6px;
+  background: rgba(241, 241, 241, 0.78);
+  padding-left: 1rem;
+  padding-rigth: 1rem;
+`;
+
+export const ReviewField = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%:
+`;
+
+export const ReviewText = styled.span`
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.67);
+  margin-top: 0.25rem;
+  max-width: 70%;
+`;
+
+export const ReviewBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%:
+  align-items: center;
+`;
+
+export const ReviewButton = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
 `;

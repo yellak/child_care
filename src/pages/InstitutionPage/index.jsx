@@ -2,6 +2,9 @@ import { Container } from './styles'
 import image from '../../assets/foto.png'
 import {BsFillPeopleFill} from 'react-icons/bs'
 import BackButton from '../../components/BackButton'
+import { Link } from "react-router-dom";
+
+const institution = 1
 
 const InstitutionPage = () => {
     return (
@@ -20,7 +23,9 @@ const InstitutionPage = () => {
                         <p> <BsFillPeopleFill size={20}/> 100 apoiadores mensais</p>
                         <div className="buttons">
                             <button className='share'> Compartilhar </button>
-                            <button className='gallery'> Galeria das Crianças </button>
+                            <Link to={`/institutions/${institution}/galery`}>
+                                <button className='gallery'> Galeria das Crianças </button>
+                            </Link>
                         </div>
                     </div>
                 </section>

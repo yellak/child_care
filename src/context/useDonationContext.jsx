@@ -419,6 +419,8 @@ const ContextProvider = ({children}) => {
 
   const formatValue = (value) => {
     let val = value.toLocaleString('pt-BR',{ minimumFractionDigits: 2 });
+    console.log(value)
+    console.log(val)
     return "R$ " + val
   }
 

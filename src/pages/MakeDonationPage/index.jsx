@@ -44,7 +44,7 @@ const MakeDonationPage = () => {
 
 
   const handleValueChange = (e) => {
-    setValue(e.target.value)
+    setValue(parseFloat(e.target.value))
     setPersonalized(true)
   }
 
@@ -54,6 +54,7 @@ const MakeDonationPage = () => {
 
   const handleValueButton = (v) => {
     setValue(v)
+    console.log(v)
     setPersonalized(false)
   }
 

@@ -16,6 +16,7 @@ const DonationsPage = () => {
             <th></th>
             <th>Instituição</th>
             <th>Valor</th>
+            <th>Frequência</th>
             <th></th>
           </tr>
         </thead>

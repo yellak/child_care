@@ -21,7 +21,9 @@ const DonationRow = ({data, ...props}) => {
             <td>
                 <p> {formatValue(data.value)} </p>
             </td>
-            <td></td>
+            <td>
+                <p> {data.frequency === 'once'? 'Única' : 'Mensal'} </p>
+            </td>
             <td></td>
             <td>
                 <tr align="right">

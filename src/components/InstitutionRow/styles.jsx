@@ -55,6 +55,7 @@ export const Container = styled.tr`
   img {
     padding: 10px;
     height: 100%;
+    width: 133px;
   }
 
 `

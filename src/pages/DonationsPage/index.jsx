@@ -1,8 +1,10 @@
 import { Container } from './styles'
 import DonationRow from '../../components/DonationRow'
-import image from '../../assets/foto.png'
+import { useDonationContext } from '../../context/useDonationContext';
 
 const DonationsPage = () => {
+  const { donations } = useDonationContext();
+  console.log(donations)
   return(
     <Container>
       <table>
@@ -18,11 +20,9 @@ const DonationsPage = () => {
           </tr>
         </thead>
         <tbody>
-          <DonationRow image={image}/>
-          <DonationRow image={image}/>
-          <DonationRow image={image}/>
-          <DonationRow image={image}/>
-          <DonationRow image={image}/>
+          {donations.map((data, key) => {return(
+            <DonationRow key={key} data={data} />
+          )})}
         </tbody>
       </table>
     </Container>

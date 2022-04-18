@@ -4,31 +4,36 @@ import Slider from "react-slick";
 import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./index.css";
-import { children, dummy_text } from './children';
+import { useParams, Link } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { useDonationContext } from '../../context/useDonationContext';
 
+const dummy_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper vulputate habitasse nunc, sed. Cras fringilla amet ac dictum malesuada nunc mi. Erat luctus ac elit aliquet nunc pellentesque orci montes, dictum. Vitae, lorem euismod lobortis arcu senectus accumsan id ac. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper vulputate habitasse nunc, sed. Cras fringilla amet ac dictum malesuada nunc mi."
 
-class ChildrenGallery extends React.Component {
+const ChildrenGallery = () => {
 
-  constructor(props) {
-    super(props);
+  let {id} = useParams();
+
+  const [child, setChild] = useState([])
+  const { institutions } = useDonationContext();
+  const institution = institutions[id-1];
+  var children = institution.children
+
+  useEffect(() => {
     children[0].selected = true
-    this.state = {
-      child: children[0]
-    };
-  }
+    setChild(children[0])
+  }, [])
 
-  update = (child_selected) => {
-    if (this.state.child) {
+  const update = (child_selected) => {
+    if (child) {
       children.forEach(child => {
         child.selected = false;
       })
     }
     child_selected.selected = true
-    this.setState({child: child_selected})
+    setChild(child_selected)
   }
 
-  render() {
     var slider_settings = {
       dots: true,
       slidesToShow: 3,
@@ -44,15 +49,15 @@ class ChildrenGallery extends React.Component {
               {children.map(element => {
                 return (
                   <div>
-                    <img className={element.selected ? "selected" : ""} src={element.img} alt={element.name} onClick={() => this.update(element)}></img>
+                    <img className={element.selected ? "selected" : ""} src={element.img} alt={element.name} onClick={() => update(element)}></img>
                   </div>
                 );
               })}
             </Slider>
             <div className="details">
               <div id="detail-left">
-                <h1>{this.state.child?.name}</h1>
-                <p>{this.state.child?.description}</p>
+                <h1>{child?.name}</h1>
+                <p>{child?.description}</p>
                 <br/>
                 <p>{dummy_text}</p>
                 <br/>
@@ -62,19 +67,20 @@ class ChildrenGallery extends React.Component {
               </div>
               <div id="detail-right">
                 <div className="info-box">
-                  <p>{`${this.state.child?.age} anos`}</p>
-                  <p>{`É de ${this.state.child?.origin}`}</p>
-                  <p>{`Gosta de comer ${this.state.child?.food}`}</p>
-                  <p>{`Gosta de jogar ${this.state.child?.game}`}</p>
+                  <p>{`${child?.age} anos`}</p>
+                  <p>{`É de ${child?.origin}`}</p>
+                  <p>{`Gosta de comer ${child?.food}`}</p>
+                  <p>{`Gosta de jogar ${child?.game}`}</p>
                 </div>
-                <button className="apadrinhar">Apadrinhar</button>
+                <Link to={`/donate/${institution.id}/${child.id}`}>
+                  <button className="apadrinhar">Apadrinhar</button>
+                </Link>
               </div>
             </div>
           </SliderAndDetails>
         </Container>
       </>
     );
-  }
 }
 
 export default ChildrenGallery

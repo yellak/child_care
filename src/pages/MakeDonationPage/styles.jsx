@@ -28,7 +28,8 @@ export const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 63vh;
+  height: auto;
+  padding-bottom: 5vh;
   width: 40%;
   @media (max-width: 1000px)
   {

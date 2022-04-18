@@ -22,8 +22,14 @@ import { Container,
          ReviewButton } from './styles'
 import { BsCircle, BsCircleFill } from 'react-icons/bs';
 import { useState } from 'react';
+import { useParams, useNavigate } from "react-router-dom"
+import { useDonationContext } from '../../context/useDonationContext';
 
 const MakeDonationPage = () => {
+
+  let {inst, child} = useParams();
+  const { addDonation, donations } = useDonationContext();
+  const navigate = useNavigate()
 
   const [page, setPage] = useState(1);
   const [frequency, setFrequency] = useState('once');
@@ -53,6 +59,19 @@ const MakeDonationPage = () => {
 
   const handleFrequency = (v) => {
     setFrequency(v)
+  }
+
+  const handleDonation = () => {
+    const donation = {
+      inst: inst,
+      child: child,
+      frequency: frequency,
+      value: value,
+      message: message
+    }
+
+    addDonation(donation)
+    navigate('/donations')
   }
 
   const donationPage = () => {
@@ -155,7 +174,7 @@ const MakeDonationPage = () => {
           <ReviewText>{message}</ReviewText>
         </ReviewField>
         <ReviewButton>
-          <SubmitButton onClick={() => {setPage(3)}}>Fazer Doação</SubmitButton>
+          <SubmitButton onClick={() => {handleDonation()}}>Fazer Doação</SubmitButton>
         </ReviewButton>
       </ReviewBody>
     )

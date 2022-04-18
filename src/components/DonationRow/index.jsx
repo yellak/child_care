@@ -1,33 +1,38 @@
 import { Container } from "./styles"
 import { Link} from "react-router-dom";
+import { useDonationContext } from '../../context/useDonationContext';
 
+const DonationRow = ({data, ...props}) => {
 
-const DonationRow = ({image, ...props}) => {
+    const { institutions,formatValue, getProg } = useDonationContext();
+
+    const institution = institutions[data.inst-1]
+    const child = institutions[data.inst-1].children[data.child-1]
 
     return(
         <Container>
             <td>
-                <img src={image} alt="" />
+                <img src={institution.image} alt="" />
             </td>
             <td>
-                <tr>Instituição Criança Top</tr>
-                <tr align="left">Nome da Criança</tr>
+                <tr>{institution.name}</tr>
+                <tr align="left">{child.name}</tr>
             </td>
             <td>
-                <p> R$ 500,00 </p>
+                <p> {formatValue(data.value)} </p>
             </td>
             <td></td>
             <td></td>
             <td>
                 <tr align="right">
-                    <Link to='/institutions/2'>
+                    <Link to={`/institutions/${institution.id}`}>
                         <button class="btn-green">
                             Detalhes
                         </button>
                     </Link>
                 </tr>
                 <tr align="right">
-                    <Link to='/donate'>
+                    <Link to={`/donate/${institution.id}/${child.id}`}>
                         <button class="btn-mustard">
                             Fazer Outra Doação
                         </button>

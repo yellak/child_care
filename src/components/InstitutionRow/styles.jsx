@@ -32,19 +32,23 @@ export const Container = styled.tr`
     display: flex;
 
     .progress {
-      background-color: #D2BD01;
-      width: 70%;
+      background-color: ${props => (props.color? props.color : '#D2BD01')};
+      width: ${props => (props.prog? props.prog : '70%')};
       height: 100%;
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
+      border-top-right-radius: ${props => ((props.prog === '100%') ? '5px' : '0')};
+      border-bottom-right-radius: ${props => ((props.prog === '100%') ? '5px' : '0')};;
     }
 
     .not-progress {
       background-color: #BBBFBB;
-      width: 30%;
+      width: ${props => (props.notProg? props.notProg : '30%')};
       height: 100%;
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
+      border-top-left-radius: ${props => ((props.notProg === '100%') ? '5px' : '0')};
+      border-bottom-left-radius: ${props => ((props.notProg === '100%') ? '5px' : '0')};
     }
   }
 

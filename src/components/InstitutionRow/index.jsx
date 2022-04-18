@@ -1,24 +1,29 @@
 import { Container } from "./styles"
 import { Link} from "react-router-dom";
+import { useDonationContext } from '../../context/useDonationContext';
 
 
-const InstitutionRow = ({image, ...props}) => {
+const InstitutionRow = ({data, ...props}) => {
+
+    const { formatValue, getProg } = useDonationContext();
+
+    const progress = getProg(data.monthly, data.necessities)
 
     return(
-        <Container>
+        <Container prog={progress[0]} notProg={progress[1]} color={progress[2]} >
             <td>
-                <img src={image} alt="" />
+                <img src={data.image} alt="" />
             </td>
-            <td>Instituição Criança Top</td>
+            <td>{data.name}</td>
             <td>
-                <p> R$ 3.500,00/ R$ 4.0000,00 </p>
+                <p> {formatValue(data.monthly)} / {formatValue(data.necessities)} </p>
                 <div className='progress-bar'>
                     <div className='progress'></div>
                     <div className='not-progress'></div>
                 </div>
             </td>
             <td>
-                <Link to='/institutions/2'>
+                <Link to={'/institutions/' + data.id}>
                     <button>
                         Detalhes
                     </button>

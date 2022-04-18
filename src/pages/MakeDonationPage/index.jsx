@@ -28,7 +28,10 @@ import { useDonationContext } from '../../context/useDonationContext';
 const MakeDonationPage = () => {
 
   let {inst, child} = useParams();
-  const { addDonation, donations } = useDonationContext();
+  const { addDonation, institutions } = useDonationContext();
+  const institution = institutions[inst-1]
+  const kid = institution.children[child-1]
+
   const navigate = useNavigate()
 
   const [page, setPage] = useState(1);
@@ -184,8 +187,8 @@ const MakeDonationPage = () => {
   return(
     <Container>
       <Header>
-        <span>Instituição Criança Top</span>
-        <span>Nome da Criança</span>
+        <span>{institution.name}</span>
+        <span>{kid.name}</span>
       </Header>
       <BoxContainer>
         <BoxHeader>
